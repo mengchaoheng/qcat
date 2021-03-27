@@ -19,6 +19,15 @@ function u = qp_ca_sl(arg,B,plim,rlim,T,Wv,Wu,ud,alg,imax,gam,tol)
   end
   u0 = mean([umin umax]')';
   W0 = zeros(m,1);
+%   ud=pinv(B)*v;
+% S=zeros(m,k);
+% P_1=pinv([B(:,2) B(:,4) B(:,6) B(:,8) B(:,9)]);
+% P_1=pinv([B(:,4) B(:,6) B(:,9)]);
+% P_1=pinv(B(:,1:8));
+% S=pinv(B);
+% S([2 4 6 8 9],:)=P_1;
+% ud=S*v;
+% gam=1e5;
   switch lower(alg)
    case 'sls'
     u = sls_alloc(B+j,v,umin,umax,Wv,Wu,ud,u0,W0,imax);
