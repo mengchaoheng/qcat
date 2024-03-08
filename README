@@ -1,8 +1,8 @@
-# About
+
    ----------------------------------------------------------
   | QCAT -  Quadratic Programming Control Allocation Toolbox |
   |                                                          |
-  | Author: Ola Härkegård, www.control.isy.liu.se/~ola       |
+  | Author: Ola H�rkeg�rd, www.control.isy.liu.se/~ola       |
    ----------------------------------------------------------
 
 This toolbox provides implementations of a number of algorithms for
@@ -34,6 +34,3 @@ To install the toolbox:
     >> help qcat  [Overview of the toolbox functions]
     >> qcatdoc    [Opens documentation including source code]
 
-# Change log
-
-The new `dev` branch is the development of the Toolbox by Ola Härkegård. test.m is the test file for use control allocation algorithm in this lib.

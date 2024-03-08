@@ -50,19 +50,11 @@ function [u,a] = dir_alloc(B,v,umin,umax)
   ub = [1e4 umax']'; % 1e4 should be infty but error if too large.
   
   % Solve linear program
-%   options = optimset('Display', 'off');
-%   x = linprog(f,A,b,Aeq,beq,lb,ub,[],options);
-%   a = x(1);
-%   u = x(2:end);
-  options = optimset('Display', 'iter');% ,'Algorithm','interior-point-legacy'
-  [x,fval,exitflag,output,lambda]= linprog(f,A,b,Aeq,beq,lb,ub,[],options);
-  if(exitflag~=1)
-      a=0;
-      u=[0;0;0;0];
-  else
-      a = x(1);
-      u = x(2:end);
-  end
+  options = optimset('Display', 'off');
+  x = linprog(f,A,b,Aeq,beq,lb,ub,[],options);
+  a = x(1);
+  u = x(2:end);
+  
   % Scale down u if a>1
   if a>1
     u = u/a;
