@@ -51,7 +51,7 @@ function [u,a] = dir_alloc(B,v,umin,umax)
   
   % Solve linear program
   options = optimset('Display', 'off');
-  x = linprog(f,A,b,Aeq,beq,lb,ub,[],options);
+  x = linprog(f,A,b,Aeq,beq,lb,ub,options); % update: delete [] for x0 error.
   a = x(1);
   u = x(2:end);
   
