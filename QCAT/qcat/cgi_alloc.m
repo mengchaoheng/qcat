@@ -60,7 +60,7 @@ function [u,iter] = cgi_alloc(B,v,umin,umax,Wv,Wu,ud,imax)
   % If the preceeding pseudoinverse solution yielded some variables
   % infeasible, redistribute the control effect to the remaining free
   % variables, if there are any.
-  while any([i_min ; i_max]) & any(i_free) & (iter<imax);
+  while any([i_min ; i_max]) && any(i_free) && (iter<imax)
     iter = iter + 1;
     % Now solve for optimal values of the remaining free variables.
     % See 2002-02-07.
@@ -71,7 +71,8 @@ function [u,iter] = cgi_alloc(B,v,umin,umax,Wv,Wu,ud,imax)
     A = Wv*B1/Wu11;
     b = Wv*(v-B*u-B1*(Wu11\(Wu1*(ud-u))));
     % Solve for optimal perturbation.
-    p1 = Wu11\(pinv_sol(A,b)+Wu1*(ud-u));
+    % p1 = Wu11\(pinv_sol(A,b)+Wu1*(ud-u));
+    p1 = Wu11\(pinv(A)*b+Wu1*(ud-u));
     % Update solution
     u(i_free) = u(i_free) + p1;
     
